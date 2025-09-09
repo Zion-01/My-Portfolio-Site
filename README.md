@@ -1,69 +1,81 @@
-# React + TypeScript + Vite
+# Portfolio — React + TypeScript + Vite + Tailwind v4 + Framer Motion
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Modern personal portfolio featuring smooth animations, dark/light theme toggle, responsive sections, and Vercel-ready deployment.
 
-Currently, two official plugins are available:
+## Features
+- Theme system: class-based dark mode with Tailwind v4
+- Smooth animations via Framer Motion
+- Responsive layout and sections: Hero, About, Skills, Projects, Contact, Footer
+- Scroll progress indicator
+- Email form powered by EmailJS
+- TypeScript-first with ESLint
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- React 19, TypeScript 5, Vite 7
+- Tailwind CSS v4 (@tailwindcss/vite)
+- Framer Motion, Lucide Icons, React Icons
+- EmailJS (browser)
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Getting Started
+1. Install dependencies:
+```bash
+npm install
+```
+2. Run dev server:
+```bash
+npm run dev
+```
+3. Build for production:
+```bash
+npm run build
+```
+4. Preview production build:
+```bash
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project Structure
 ```
+src/
+  components/        # UI components (Hero, About, Skills, Projects, Contact, Footer, etc.)
+  context/           # Theme context provider and hook
+  animations/        # Motion presets
+  assets/            # Static assets
+  App.tsx            # App shell
+  index.css          # Tailwind v4 entry + custom styles
+```
+
+## Theming (Tailwind v4)
+- Dark mode is class-based using a custom variant in `src/index.css`:
+```css
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+```
+- The `ThemeProvider` toggles the `dark` class on `html` and syncs `data-theme` and `color-scheme`.
+- Use `dark:` utilities for alternate styles (e.g., `text-gray-900 dark:text-white`).
+
+## Environment Variables
+If using the contact form, set your EmailJS credentials (or remove the feature):
+- Service ID
+- Template ID
+- Public key
+
+These are referenced in `src/components/Contact.tsx` when calling `emailjs.sendForm(...)`.
+
+## Deploying to Vercel
+1. Push the repo to GitHub.
+2. In Vercel, import the repository.
+3. Settings:
+   - Framework preset: Vite
+   - Build command: `npm run build`
+   - Output directory: `dist`
+4. Add environment variables if needed (EmailJS keys).
+
+## Scripts
+- `npm run dev` — start dev server
+- `npm run build` — type-check and build
+- `npm run preview` — preview production build
+- `npm run lint` — run ESLint
+
+## License
+This project is available under the MIT License.
