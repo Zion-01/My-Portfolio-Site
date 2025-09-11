@@ -66,7 +66,6 @@ const Navbar = () => {
                 >
                   <MotionLink
                     href={`#${section.toLowerCase()}`}
-                    onClick={closeMenu}
                     className="block text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-200 py-2 text-lg"
                   >
                     {section}

@@ -1,4 +1,3 @@
-import './App.css'
 import './index.css'
 import { ThemeProvider } from './context/ThemeContext'
 import ScrollProgress from './components/ScrollProgress'
