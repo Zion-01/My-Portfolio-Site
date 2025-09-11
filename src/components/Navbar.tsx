@@ -15,7 +15,7 @@ const Navbar = () => {
     <nav className="fixed w-full top-0 bg-white/80 dark:bg-gray-900/95 backdrop-blur-sm shadow-lg z-50 border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         <MotionLink href="#" className="text-gray-900 dark:text-white font-bold text-xl">
-          David.dev
+          David.Aliyu
         </MotionLink>
         
         {/* Desktop Menu */}
